@@ -36,15 +36,15 @@ const getApi = ({path='', access_token=''} = {}) => {
 }
 
 const putApi = ({path='', data={} ,access_token=''} = {}) => {
-    return send({method:'PUT',path,access_token})
+    return send({method:'PUT',path, data,access_token})
 }
 
 const postApi = ({path='', data={} ,access_token=''} = {}) => {
-    return send({method:'POST',path,access_token})
+    return send({method:'POST',path, data,access_token})
 }
 
 const delApi = ({path='', data={} ,access_token=''} = {}) => {
-    return send({method:'DELETE',path,access_token})
+    return send({method:'DELETE',path, data,access_token})
 }
 
 export {
