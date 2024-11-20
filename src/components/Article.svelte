@@ -5,7 +5,7 @@
 <div class="slog-content-box" >
     <div class="content-box-header">
         <div class="content-box-header-inner-left " >
-            <p class="p-user" >{article.username}</p>
+            <p class="p-user" >{article.userEmail}</p>
             <p class="p-date" >{article.createdAt}</p>
         </div>
         <div class="content-box-header-inner-right">
