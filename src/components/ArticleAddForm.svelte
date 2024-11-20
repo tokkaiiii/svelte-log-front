@@ -1,3 +1,20 @@
+<script>
+    import {articles} from "../stores/index.js";
+    let values = {
+        formContent:''
+    }
+    const onAddArticle = async () => {
+        try{
+            await articles.addArticle(values.formContent)
+            onCancelAddArticle()
+        }catch (error){
+            alert(error)
+        }
+    }
+    const onCancelAddArticle = () => {
+        values.formContent = ''
+    }
+</script>
 <!-- slog-addForm start -->
 <div class="slog-add-content-box" >
     <div class="content-box-header ">
@@ -6,12 +23,14 @@
         </div>
     </div>
     <div class="content-box-main">
-        <textarea id="message" rows="5" class="slog-content-textarea " placeholder="내용을 입력해 주세요."></textarea>
+        <textarea id="message" rows="5" class="slog-content-textarea " placeholder="내용을 입력해 주세요."
+        bind:value={values.formContent}
+        ></textarea>
     </div>
     <div class="content-box-bottom">
         <div class="button-box">
-            <button class="button-base">입력</button>
-            <button class="button-base">취소</button>
+            <button class="button-base" on:click={onAddArticle}>입력</button>
+            <button class="button-base" on:click={onCancelAddArticle}>취소</button>
         </div>
     </div>
 </div>

@@ -75,10 +75,34 @@ function setArticles() {
         // 페이지 초기화 시킬때 페이지 잠금이 돼있으면 잠금 해제
         articlePageLock.set(false)
     }
+
+    const addArticle = async (content) => {
+        const access_token = get(auth).Authorization
+        try{
+            const options = {
+                path:"/articles",
+                data: {
+                    content:content
+                },
+                access_token: access_token
+            }
+            const newArticle = await postApi(options)
+            update(datas => {
+                // 기존 목록 앞에 새글이 추가되도록
+                datas.articleList = [newArticle,...datas.articleList]
+                return datas
+            })
+            return
+        }catch (error){
+            throw error
+        }
+    }
+
     return {
         subscribe,
         fetchArticles,
-        resetArticles
+        resetArticles,
+        addArticle
     }
 }
 
