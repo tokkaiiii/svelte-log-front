@@ -98,11 +98,44 @@ function setArticles() {
         }
     }
 
+    const openMenuPopup = (id) => {
+        update(datas => {
+            datas.menuPopup = id
+            return datas
+        })
+    }
+
+    const closeMenuPopup = () => {
+        update(datas => {
+            datas.menuPopup = ''
+            return datas
+        })
+    }
+
+    const openEditModeArticle = (id) => {
+        articles.closeMenuPopup()
+        update(datas => {
+            datas.editMode = id
+            return datas
+        })
+    }
+
+    const closeEditModeArticle = () => {
+        update(datas => {
+            datas.editMode = ''
+            return datas
+        })
+    }
+
     return {
         subscribe,
         fetchArticles,
         resetArticles,
-        addArticle
+        addArticle,
+        openMenuPopup,
+        closeMenuPopup,
+        openEditModeArticle,
+        closeEditModeArticle
     }
 }
 
